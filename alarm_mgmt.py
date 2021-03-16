@@ -62,7 +62,7 @@ def get_alarms():
         
         input("press Enter to continue: ")
 
-# 
+
 def add_alarm():
     """Askes for alarm info and adds an alarm.
     
