@@ -2,9 +2,8 @@
 
 # STILL EDITING:
 ### Still need to: 
-- Update my master again, to reflect updated branch project copy
 - Record and upload video, then post link HERE
-- Update file below to match master
+- Update this README to match master (currently just copied from Final-Modified's Jupyter notebook)
 
 ### Copy submitted for COGS 18 Final Project:
 - Under branch: Final-Modified
