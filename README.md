@@ -3,7 +3,7 @@
 # STILL EDITING:
 ### Still need to: 
 - Update my master again, to reflect updated branch project copy
-- Record and upload video, then post link
+- Record and upload video, then post link HERE
 - Update file below to match master
 
 
