@@ -10,7 +10,7 @@ test_validate_time()
 
 import pytest
 
-import alarm_mgmt as am
+import alarm_module.alarm_mgmt as am
 
 
 def test_hex_validation():

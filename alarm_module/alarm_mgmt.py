@@ -40,7 +40,7 @@ string methods:
 import os
 import json
 
-import time_check as tc
+import alarm_module.time_check as tc
 import string
 
 

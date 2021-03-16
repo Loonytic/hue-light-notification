@@ -8,8 +8,8 @@ menu.menu()
     Initializes the main menu to be used
 """
 
-import menu
-import time_check as tc
+import alarm_module.menu as menu
+import alarm_module.time_check as tc
 
 
 tc.init_time_check_thread()

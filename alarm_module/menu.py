@@ -15,8 +15,8 @@ switch statements:
     https://jaxenter.com/implement-switch-case-statement-python-138315.html
 """
 
-import alarm_mgmt as am
-import time_check as tc
+import alarm_module.alarm_mgmt as am
+import alarm_module.time_check as tc
 #import api
 
 

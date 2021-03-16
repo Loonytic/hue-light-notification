@@ -33,8 +33,8 @@ import json
 import requests
 from rgbxy import Converter
 
-from secret import bridge_ip
-from secret import api_key
+from alarm_module.secret import bridge_ip
+from alarm_module.secret import api_key
 
 base_url = f"http://{bridge_ip}/api/{api_key}"
 light5_state = f"{base_url}/lights/5/state"
