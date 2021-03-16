@@ -6,6 +6,9 @@
 - Record and upload video, then post link HERE
 - Update file below to match master
 
+### Copy submitted for COGS 18 Final Project:
+- Under branch: Final-Modified
+
 
 # Philips Hue Light Notification Alarm
 
