@@ -17,7 +17,7 @@ switch statements:
 
 import alarm_module.alarm_mgmt as am
 import alarm_module.time_check as tc
-#import api
+import alarm_module.api as api
 
 
 def menu():
@@ -71,8 +71,7 @@ def menu_selection(option):
     print("")
 
     switch = {
-        1: lambda : print("Pretend my light turned off!"), 
-        #1: lambda : api.light_off(),
+        1: lambda : api.light_off(),
         2: lambda : am.get_alarms(),
         3: lambda : am.add_alarm(),
         4: lambda : am.delete_alarm(),

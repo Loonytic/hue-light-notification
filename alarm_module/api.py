@@ -36,6 +36,7 @@ from rgbxy import Converter
 from alarm_module.secret import bridge_ip
 from alarm_module.secret import api_key
 
+# API Credentials & Different Lights/Conditions Can Go Here
 base_url = f"http://{bridge_ip}/api/{api_key}"
 light5_state = f"{base_url}/lights/5/state"
 
