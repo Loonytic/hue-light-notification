@@ -40,6 +40,7 @@ from alarm_module.secret import api_key
 base_url = f"http://{bridge_ip}/api/{api_key}"
 light5_state = f"{base_url}/lights/5/state"
 
+#print(light5_state)
 
 def set_light_color(color_hex):
     """Converts hex to xy, then sets color & turns on light.
@@ -56,7 +57,7 @@ def set_light_color(color_hex):
     convert = Converter()
     color_xy = convert.hex_to_xy(color_hex)
 
-    color_param = {'xy': color_xy, "on": True}
+    color_param = {"xy": color_xy, "on": True}
     response = requests.put(light5_state, data = json.dumps(color_param))
 
 
@@ -65,3 +66,17 @@ def light_off():
 
     off_param = {"on": False}
     response = requests.put(light5_state, data = json.dumps(off_param))
+
+
+def light_on():
+    """Turns on the light (to standard white color)."""
+
+    on_param = {"on": True, "xy": [0.3146, 0.3303]}
+    response = requests.put(light5_state, data = json.dumps(on_param))
+
+
+def light_on_notice_me():
+    """Turns on the light to designated color."""
+
+    on_param_purp = {"on": True, "xy": [0.1614, 0.0515]}
+    response = requests.put(light5_state, data = json.dumps(on_param_purp))
