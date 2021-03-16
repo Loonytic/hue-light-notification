@@ -8,6 +8,15 @@ add_alarm()
     Askes for alarm info and adds an alarm
 delete_alarm()
     Asks for name of alarm to delete and deletes chosen alarm
+get_alarm_time():
+    Asks for the time to set the alarm to and checks if it's valid
+validate_time(timestr):
+    Validates the time entered when setting an alarm
+get_hex_color():
+    Asks for the hex color to set the alarm to and checks if valid
+validate_hex_color(color):
+    Validates the hex color entered when setting an alarm
+
 
 References
 ----------
@@ -53,21 +62,20 @@ def get_alarms():
         
         input("press Enter to continue: ")
 
-
+# 
 def add_alarm():
     """Askes for alarm info and adds an alarm.
     
     Asks for the alarm name, time, and hex code color,
     then adds the given alarm to the alarm text file.
 
-    Checks if input values are valid.
+    Checks if input values are valid for hours and minutes.
+    Checks if input values are valid hexadecimal
     """
     
     name = input("Enter alarm name: ")
 
-    # Check if time input values are valid for hours and minutes
     timestr = get_alarm_time()
-    # Checks if hex value input is valid
     color = get_hex_color()
             
     # Takes alarms and turns the JSON into a python object
@@ -108,54 +116,98 @@ def delete_alarm():
 
 
 def get_alarm_time():
+    """Asks for the time to set the alarm to and checks if it's valid.
+
+    Returns
+    -------
+    timestr : string
+        String alarm time in the format of HH:mm:ss
+    """
     
     time_valid = False
+
     while time_valid is False:
         timestr = input("Enter alarm time in 24hr format (HH:mm): ")
         timestr = timestr + ":00"
         time_valid = validate_time(timestr)
         
-    
     return timestr
 
 
 def validate_time(timestr):
+    """Validates the time entered when setting an alarm.
+
+    Adds '0' before the hours digit, if only one digit was entered.
+    Checks hours and minutes are both valid time inputs.
+    
+    Parameters
+    ----------
+    timestr : string
+        String of alarm time to validate.
+
+    Returns
+    -------
+    output : boolean
+        Boolean of whether time is valid or not.
+    """
 
     time = timestr.split(":")
+    output = False
 
-    # Adds '0' before number, if only one digit is entered in hours
     if len(time[0]) == 1:
         timestr = "0" + timestr
 
     if int(time[0]) > 23 or int(time[0]) < 0:
         print("Please input a valid time.")
-        return False
-
-    if int(time[1]) > 59 or int(time[1]) < 0:
+        return output
+    elif int(time[1]) > 59 or int(time[1]) < 0:
         print("Please input a valid time.")
-        return False
-
+        return output
     else:
-        return True
+        output = True
+        return output
 
 
 def get_hex_color():
+    """Asks for the hex color to set the alarm to and checks if valid.
+    
+    Returns
+    -------
+    color : string
+        String alarm color in hexadecimal
+    """
     
     color_valid = False
-    hex_valid = False
+
     while color_valid is False:
         color = input("enter Hex color value: ")
         color_valid = validate_hex_color(color)
+
+    return color
         
 
 def validate_hex_color(color):
+    """Validates the hex color entered when setting an alarm.
     
+    Parameters
+    ----------
+    color : string
+        String of hex color value to validate.
+
+    Returns
+    -------
+    output : boolean
+        Boolean of whether hex color value is valid or not.
+    """
+
+    output = False
+
     if len(color) != 6:
         print("Please only input 6 Hexadecimal characters (A-Z, 0-9)")
-        return False
-
+        return output
     elif all(c in string.hexdigits for c in color) is False:
         print("Please only input 6 Hexadecimal characters (A-Z, 0-9)")
-        return False
+        return output
     else:
-        return True
+        output = True
+        return output

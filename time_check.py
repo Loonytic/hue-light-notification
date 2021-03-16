@@ -19,7 +19,7 @@ import threading
 import json 
 import os
 
-import api
+#import api
 
 
 def thread_check_time():
@@ -49,8 +49,8 @@ def thread_check_time():
         # At alarm time, set the alarm's color and turn on the light
         for item in data:
             if data[item]["time"] == now:
-                api.set_light_color(data[item]["color"])
-
+                #api.set_light_color(data[item]["color"])
+                print("Pretend my light turned on!")
 
 
 def init_time_check_thread():

@@ -65,5 +65,3 @@ def light_off():
 
     off_param = {"on": False}
     response = requests.put(light5_state, data = json.dumps(off_param))
-
-
