@@ -1,0 +1,7 @@
+# Required Python modules from pip
+pytest
+requests
+
+
+# Philips Hue rgbxy converter library from benknight: 
+    # https://github.com/benknight/hue-python-rgb-converter

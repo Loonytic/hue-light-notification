@@ -1,16 +1,43 @@
-import json
+"""Module contains functions related to managing data for the alarms.
+
+Functions
+---------
+get_alarms()
+    Gets and displays all alarms from the alarms text file
+add_alarm()
+    Askes for alarm info and adds an alarm
+delete_alarm()
+    Asks for name of alarm to delete and deletes chosen alarm
+
+References
+----------
+Python if path exists: 
+    https://www.geeksforgeeks.org/python-os-path-exists-method/
+JSON referencing: 
+    https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/
+splitting strings: 
+    https://www.w3schools.com/python/ref_string_split.asp
+nested dictionaries: 
+    https://www.geeksforgeeks.org/python-nested-dictionary/
+check if string is hexadecimal: 
+    https://stackoverflow.com/questions/11592261/check-if-a-string-is-hexadecimal
+
+iterate thorugh dictionary: 
+    https://realpython.com/iterate-through-dictionary-python/
+string methods: 
+    https://www.w3schools.com/python/python_ref_string.asp
+"""
+
 import os
+import json
 
-# Python if path exists: https://www.geeksforgeeks.org/python-os-path-exists-method/
-# JSON referencing: https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/
-# splitting strings: https://www.w3schools.com/python/ref_string_split.asp
-# string methods: https://www.w3schools.com/python/python_ref_string.asp
-# iterate thorugh dictionary: https://realpython.com/iterate-through-dictionary-python/
-# nested dictionaries: https://www.geeksforgeeks.org/python-nested-dictionary/
+import time_check as tc
+import string
 
 
-# Gets and displays alarms from 'alarms.txt' file
 def get_alarms():
+    """Gets and displays all alarms from the alarms text file."""
+    
     if not os.path.exists("alarms.txt"):
         print("alarms.txt does not exist. Please Add an alarm first.")
         return
@@ -27,61 +54,41 @@ def get_alarms():
         input("press Enter to continue: ")
 
 
-# Function for adding an alarm. Takes in a name, time, and color
 def add_alarm():
+    """Askes for alarm info and adds an alarm.
     
-    # Prompts user for input for name, time, and color
+    Asks for the alarm name, time, and hex code color,
+    then adds the given alarm to the alarm text file.
+
+    Checks if input values are valid.
+    """
+    
     name = input("Enter alarm name: ")
 
-    # Check time inputs are valid for hours and minutes
-    timevalid = False
-    while timevalid is False:
-        timestr = input("Enter alarm time in 24hr format (HH:mm): ")
-        timestr = timestr + ":00"
-        print(timestr)
-        time = timestr.split(":")
-        print(len(time[0]))
-
-        # Adds '0' before number, if only one digit is entered in hours
-        if len(time[0]) == 1:
-            timestr = "0" + timestr
-        # Checks for time range for hours and minutes
-        if int(time[0]) > 23 or int(time[0]) < 0:
-            print("Please input a valid time.")
-            continue
-        if int(time[1]) > 59 or int(time[1]) < 0:
-            print("Please input a valid time.")
-            continue
-        else:
-            timevalid = True
-
-    color = input("enter Hex color value: ")
-
-    # TODO: add check for hex number parameters
-
-    # Check to see if there's an 'alarms' text file already, if not create it
-    if not os.path.exists("alarms.txt"): 
-        data = {}
-        alarmfile = open("alarms.txt", "x")
-        with open("alarms.txt", "w") as outfile:
-            json.dump(data, outfile, indent = 4)
-    
-    # Takes everything in 'alarms.txt' and turns the JSON into a python object
+    # Check if time input values are valid for hours and minutes
+    timestr = get_alarm_time()
+    # Checks if hex value input is valid
+    color = get_hex_color()
+            
+    # Takes alarms and turns the JSON into a python object
     with open("alarms.txt") as json_file:
         data = json.load(json_file)
     
-    # Adds alarm to 'alarms.txt'
+    # Adds alarm to alarms file
     data[name] = {
             "time": timestr,
             "color": color
         }
-    # Resaves alarm data to 'alarms.txt'
     with open("alarms.txt", "w") as outfile:
         json.dump(data, outfile, indent = 4)
 
+    # Refreshes time checking thread
+    tc.init_time_check_thread()
 
-# Deletes alarms
+
 def delete_alarm():
+    """Asks for name of alarm to delete and deletes chosen alarm."""
+
     if not os.path.exists("alarms.txt"):
         print("alarms.txt does not exist. Please Add an alarm first.")
         return
@@ -96,4 +103,59 @@ def delete_alarm():
     with open("alarms.txt", "w") as outfile:
         json.dump(data, outfile, indent = 4)
 
+    # Refreshes time checking thread
+    tc.init_time_check_thread()
 
+
+def get_alarm_time():
+    
+    time_valid = False
+    while time_valid is False:
+        timestr = input("Enter alarm time in 24hr format (HH:mm): ")
+        timestr = timestr + ":00"
+        time_valid = validate_time(timestr)
+        
+    
+    return timestr
+
+
+def validate_time(timestr):
+
+    time = timestr.split(":")
+
+    # Adds '0' before number, if only one digit is entered in hours
+    if len(time[0]) == 1:
+        timestr = "0" + timestr
+
+    if int(time[0]) > 23 or int(time[0]) < 0:
+        print("Please input a valid time.")
+        return False
+
+    if int(time[1]) > 59 or int(time[1]) < 0:
+        print("Please input a valid time.")
+        return False
+
+    else:
+        return True
+
+
+def get_hex_color():
+    
+    color_valid = False
+    hex_valid = False
+    while color_valid is False:
+        color = input("enter Hex color value: ")
+        color_valid = validate_hex_color(color)
+        
+
+def validate_hex_color(color):
+    
+    if len(color) != 6:
+        print("Please only input 6 Hexadecimal characters (A-Z, 0-9)")
+        return False
+
+    elif all(c in string.hexdigits for c in color) is False:
+        print("Please only input 6 Hexadecimal characters (A-Z, 0-9)")
+        return False
+    else:
+        return True
