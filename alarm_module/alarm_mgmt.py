@@ -64,7 +64,7 @@ def get_alarms():
 
 
 def add_alarm():
-    """Askes for alarm info and adds an alarm.
+    """Asks for alarm info and adds an alarm.
     
     Asks for the alarm name, time, and hex code color,
     then adds the given alarm to the alarm text file.

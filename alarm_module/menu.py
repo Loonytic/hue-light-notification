@@ -44,11 +44,19 @@ def menu_text():
 
     print (30 * "-" , "MENU" , 30 * "-")
     print ("1 : Turn Light Off")
-    print ("2 : Get Alarm List")
-    print ("3 : Add Alarm")
-    print ("4 : Delete Alarm")
-    print ("5 : Exit")
+    print ("2 : Turn Light On")
+    print ("3 : Get Alarm List")
+    print ("4 : Add Alarm")
+    print ("5 : Delete Alarm")
+    print ("6 : Bother Boyfriend")
+    print ("0 : Exit")
     print (67 * "-")
+
+    # Want to add:
+    # Update Alarm
+    # Add Timer (self deletes after turning off)
+    # Colors Key List
+    # Color Name (to alarm text file)
     
 
 def menu_selection(option):
@@ -72,10 +80,12 @@ def menu_selection(option):
 
     switch = {
         1: lambda : api.light_off(),
-        2: lambda : am.get_alarms(),
-        3: lambda : am.add_alarm(),
-        4: lambda : am.delete_alarm(),
-        5: lambda : exit()
+        2: lambda : api.light_on(),
+        3: lambda : am.get_alarms(),
+        4: lambda : am.add_alarm(),
+        5: lambda : am.delete_alarm(),
+        6: lambda : api.light_on_notice_me(),
+        0: lambda : exit()
     }
     
     invalid_select = "Invalid selection. Press Enter to try again."
