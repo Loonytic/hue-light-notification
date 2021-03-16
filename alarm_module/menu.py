@@ -4,9 +4,9 @@ Functions
 ---------
 menu()
     Initializes the main menu
-menu_text():
+menu_text()
     Prints the main menu options
-menu_selection(option):
+menu_selection(option)
     Chooses the function for the selected menu option
 
 References
@@ -15,9 +15,9 @@ switch statements:
     https://jaxenter.com/implement-switch-case-statement-python-138315.html
 """
 
-import alarm_mgmt as am
-import time_check as tc
-import api
+import alarm_module.alarm_mgmt as am
+import alarm_module.time_check as tc
+import alarm_module.api as api
 
 
 def menu():
@@ -60,7 +60,7 @@ def menu_selection(option):
     Parameters
     ----------
     option : integer
-        Integer choice for switch statement
+        Integer choice for switch statement.
 
     Returns
     -------

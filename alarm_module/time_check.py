@@ -2,9 +2,9 @@
 
 Functions
 ---------
-thread_check_time():
+thread_check_time()
     Checks the current time and creates an alarms text file
-init_time_check_thread():
+init_time_check_thread()
     Initializes a new thread for checking the time
 
 References
@@ -19,7 +19,7 @@ import threading
 import json 
 import os
 
-import api
+import alarm_module.api as api
 
 
 def thread_check_time():
@@ -50,7 +50,6 @@ def thread_check_time():
         for item in data:
             if data[item]["time"] == now:
                 api.set_light_color(data[item]["color"])
-
 
 
 def init_time_check_thread():
