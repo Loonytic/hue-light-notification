@@ -4,9 +4,9 @@ Functions
 ---------
 menu()
     Initializes the main menu
-menu_text():
+menu_text()
     Prints the main menu options
-menu_selection(option):
+menu_selection(option)
     Chooses the function for the selected menu option
 
 References

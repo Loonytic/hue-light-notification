@@ -2,9 +2,9 @@
 
 Functions
 ---------
-thread_check_time():
+thread_check_time()
     Checks the current time and creates an alarms text file
-init_time_check_thread():
+init_time_check_thread()
     Initializes a new thread for checking the time
 
 References

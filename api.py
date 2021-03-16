@@ -1,13 +1,13 @@
 """Module contains functions related to handling the Philips Hue API.
 
 Turns lights on/off and sets alarm colors.
-Imports variables from secret file for security purposes. 
+Imports variables from secret file, for security purposes. 
 
 Functions
 ---------
-set_light_color(color_hex):
+set_light_color(color_hex)
     Converts hex to xy, then sets color & turns on light
-light_off():
+light_off()
     Turns off the light
 
 References
@@ -35,7 +35,6 @@ from rgbxy import Converter
 
 from secret import bridge_ip
 from secret import api_key
-
 
 base_url = f"http://{bridge_ip}/api/{api_key}"
 light5_state = f"{base_url}/lights/5/state"

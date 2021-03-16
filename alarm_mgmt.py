@@ -8,13 +8,13 @@ add_alarm()
     Askes for alarm info and adds an alarm
 delete_alarm()
     Asks for name of alarm to delete and deletes chosen alarm
-get_alarm_time():
+get_alarm_time()
     Asks for the time to set the alarm to and checks if it's valid
-validate_time(timestr):
+validate_time(timestr)
     Validates the time entered when setting an alarm
-get_hex_color():
+get_hex_color()
     Asks for the hex color to set the alarm to and checks if valid
-validate_hex_color(color):
+validate_hex_color(color)
     Validates the hex color entered when setting an alarm
 
 

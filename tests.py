@@ -2,9 +2,9 @@
 
 Functions
 ---------
-test_hex_validation():
+test_hex_validation()
     Tests for hex color validation
-test_validate_time():
+test_validate_time()
     Tests for time validation
 """
 
