@@ -9,6 +9,14 @@ The **script and modules utilize the Philips Hue API**, using a **Philips Hue wh
 All **smart bulbs need to connect to a bridge** to access their "smart" capabilities.
 
 
+
+## Demonstration Video
+https://youtu.be/vLPcNovONdw
+
+**Side Note:** "Turn Light On" and "Bother Boyfriend" are new menu options ones that I added to my 'master' app, they weren't included in my original project submission.
+
+
+
 ## Background:
 The inspiration for this project came from my tendency to forget about my alarms after turning them off. I set a lot of alarms throughout the day to keep myself on track, but I turn them off immediately when they start ringing because they can be noisy and disturbing. I usually end up forgetting about them for hours and end up not following through on whatever it was I set the alarm for. Using a colored light instead of a sound would allow me leave the alarm on until I complete the intended task. 
 
