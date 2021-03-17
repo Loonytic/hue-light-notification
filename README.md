@@ -2,7 +2,6 @@
 
 # STILL EDITING:
 ### Still need to: 
-- Record and upload video, then post link HERE
 - Update this README to match master (currently just copied from Final-Modified's Jupyter notebook)
 
 ### Copy submitted for COGS 18 Final Project:
