@@ -1,11 +1,7 @@
 # hue-light-notification
 
-# STILL EDITING:
-### Still need to: 
-- Update this README to match master (currently just copied from Final-Modified's Jupyter notebook)
-
-### Copy submitted for COGS 18 Final Project:
-- Under branch: Final-Modified
+# Copy submitted for COGS 18 Final Project:
+- Under **branch: Final-Modified**
 
 
 # Philips Hue Light Notification Alarm
